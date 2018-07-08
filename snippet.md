@@ -2,7 +2,7 @@
 Few lines of useful code:
 
 
-#Tensorflow Object Detection API
+# Tensorflow Object Detection API
 
 training:
 `python object_detection/eval.py 
@@ -23,7 +23,7 @@ inspect graph:
 `ensorboard --logdir=/tmp/tensorboard`
 `python tensorflow/python/tools/import_pb_to_tensorboard.py --model_dir resnetv1_50.pb --log_dir /tmp/tensorboard`
 
-#Vision Kit
+# Vision Kit
 
 Compile
 `./bonnet_model_compiler.par \
