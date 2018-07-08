@@ -26,6 +26,7 @@ python object_detection/train.py
 inspect graph:
 
 `pip install tensorboard`
+
 `ensorboard --logdir=/tmp/tensorboard`
 
 ```bash
