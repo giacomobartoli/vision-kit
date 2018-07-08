@@ -6,7 +6,7 @@ Few lines of useful code:
 
 training:
 
-```python
+```
 python object_detection/eval.py 
     --logtostderr 
     --pipeline_config_path=object_”detection/samples/configs/faster_rcnn_resnet101_voc07.config” 
@@ -16,7 +16,7 @@ python object_detection/eval.py
   
 eval:
 
-```python
+```
 python object_detection/train.py     
     --logtostderr     
     --pipeline_config_path="object_detection/samples/configs/faster_rcnn_resnet101_voc07.config"    
