@@ -27,7 +27,7 @@ inspect graph:
 
 `pip install tensorboard`
 
-`ensorboard --logdir=/tmp/tensorboard`
+`tensorboard --logdir=/tmp/tensorboard`
 
 ```bash
 python tensorflow/python/tools/import_pb_to_tensorboard.py
