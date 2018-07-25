@@ -62,8 +62,8 @@ def main():
         # https://picamera.readthedocs.io/en/release-1.13/fov.html#sensor-modes
         # Set to the highest resolution possible at 16:9 aspect ratio
         camera.sensor_mode = 4
-        camera.resolution = (1640, 922)
-        #camera.resolution = (1296, 730)
+        #camera.resolution = (1640, 922)
+        camera.resolution = (1640, 1232)
         camera.start_preview(fullscreen=True)
 
         with CameraInference(pikachu_object_detection.model()) as inference:
@@ -73,6 +73,7 @@ def main():
             last_time = time()
             pics = 0
             save_pic = False
+            enable_label = True
 
             # Annotator renders in software so use a smaller size and scale results
             # for increased performace.
@@ -87,6 +88,12 @@ def main():
                 return (scale_x * x, scale_y * y, scale_x * (x + width),
                     scale_y * (y + height))
 
+            def leftCorner(bounding_box):
+                x, y, width, height = bounding_box
+                return (scale_x * x, scale_y * y)
+
+            def truncateFloat(value):
+                return '%.3f'%(value)
 
             for f, result in enumerate(inference.run()):
                 print("sono dentro al ciclo..")
@@ -97,11 +104,13 @@ def main():
                     print("sono dentro al secondo ciclo..")
                     print('%s',obj.label)
                     annotator.bounding_box(transform(obj.bounding_box), fill=0)
+                    if enable_label:
+                        annotator.text(leftCorner(obj.bounding_box),obj.label + " - " + str(truncateFloat(obj.score)))
                     print('%s Object #%d: %s' % (strftime("%Y-%m-%d-%H:%M:%S"), i, str(obj)))
                     x, y, width, height = obj.bounding_box
                     if obj.label == 'PIKACHU':
                         save_pic = True
-                        player.play(*BEEP_SOUND)
+                        #player.play(*BEEP_SOUND)
 
                 # save the image if there was 1 or more cats detected
 
@@ -111,8 +120,8 @@ def main():
                     pics += 1
                     save_pic = False
 
-                if f == args.num_frames or pics == args.num_pics:
-                    break
+                #if f == args.num_frames or pics == args.num_pics:
+                #    break
 
                 now = time()
                 duration = (now - last_time)
@@ -122,9 +131,9 @@ def main():
                 # Then there is some additional overhead for the object detector to
                 # interpret the result and to save the image. If total process time is
                 # running slower than 50 ms it could be a sign the CPU is geting overrun
-                if duration > 0.50:
-                    print("Total process time: %s seconds. Bonnet inference time: %s ms " %
-                          (duration, result.duration_ms))
+                #if duration > 0.50:
+                #    print("Total process time: %s seconds. Bonnet inference time: %s ms " %
+                #          (duration, result.duration_ms))
 
                 last_time = now
 
