@@ -4,7 +4,7 @@
 Have you ever wondered how to exploit Deep Learning and Google Vision Kit for detecting Pikachu? Well, in that case this project might be interesting for you.
 
 ### Files:
-* pikachu-object-detection.py: a small library that process .protobinary file
+* pikachu_object_detection.py: a small library that process .protobinary file
 * custom-pikachu-detector.py: a ready to go python executable. Its aim is to reveal the camera, capture the input video and apply inference.
 * pikachu-detector.protobinary: a tf frozen graph. It has been trained over a pre-trained coco model, with 10k iterations.
 
