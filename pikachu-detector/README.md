@@ -5,8 +5,8 @@ Have you ever wondered how to exploit Deep Learning and Google Vision Kit for de
 
 ### Files:
 * pikachu_object_detection.py: a small library that process .protobinary file
-* custom-pikachu-detector.py: a ready to go python executable. Its aim is to reveal the camera, capture the input video and apply inference.
-* pikachu-detector.protobinary: a tf frozen graph. It has been trained over a pre-trained coco model, with 10k iterations.
+* custom_pikachu_detector.py: a ready to go python executable. Its aim is to reveal the camera, capture the input video and apply inference.
+* pikachu_detector.protobinary: a tf frozen graph. It has been trained over a pre-trained coco model, with 10k iterations.
 
 
 ### Deploy:
