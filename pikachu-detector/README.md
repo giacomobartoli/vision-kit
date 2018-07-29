@@ -14,7 +14,7 @@ Have you ever wondered how to exploit Deep Learning and Google Vision Kit for de
 * Connect through ssh to your Vision Kit
 * Move to /home/AIY-projects/src/example/vision
 * Clone this repo
-* Type ./custom-pikachu-detector from a shell
+* Type `./custom_pikachu_detector` from a shell
 
 
 ### Results:
