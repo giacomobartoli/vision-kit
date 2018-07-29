@@ -9,4 +9,4 @@
 ## More info
 
 * [Google Vision Kit](https://aiyprojects.withgoogle.com/vision/)
-* [TensorFlow Object Detection API] (https://github.com/tensorflow/models/tree/master/research/object_detection)
+* [TensorFlow Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection)
