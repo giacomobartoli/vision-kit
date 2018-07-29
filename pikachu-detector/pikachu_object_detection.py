@@ -1,16 +1,4 @@
-# Copyright 2017 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# DISCLAIMER: this code has been taken by Google Vision Kit and edit by me.
 """API for Object Detection tasks."""
 import math
 import sys
@@ -20,12 +8,11 @@ from aiy.vision.inference import ModelDescriptor
 from aiy.vision.models import utils
 from aiy.vision.models.object_detection_anchors import ANCHORS
 
-# _COMPUTE_GRAPH_NAME = 'mobilenet_ssd_256res_0.125_person_cat_dog.binaryproto'
 _COMPUTE_GRAPH_NAME = os.getcwd() + '/pikachu_detector.binaryproto'
 _NUM_ANCHORS = len(ANCHORS)
 _MACHINE_EPS = sys.float_info.epsilon
 
-# EDIT
+
 _NUM_LABELS = 2
 
 class Object(object):
@@ -48,7 +35,7 @@ class Object(object):
         self.bounding_box = bounding_box
         self.kind = kind
         self.score = score
-        self.label = self._LABELS[self.kind] # EDIT
+        self.label = self._LABELS[self.kind]
 
     def __str__(self):
         return 'kind=%s(%d), score=%f, bbox=%s' % (self._LABELS[self.kind],
@@ -71,8 +58,6 @@ def _decode_detection_result(logit_scores, box_encodings, anchors,
       A list of ObjectDetection.Result.
     """
     assert len(box_encodings) == 4 * _NUM_ANCHORS
-    # EDIT
-    # assert len(logit_scores) == 4 * _NUM_ANCHORS
     assert len(logit_scores) == _NUM_LABELS * _NUM_ANCHORS
 
     x0, y0 = offset
@@ -214,7 +199,6 @@ def model():
         compute_graph=utils.load_compute_graph(_COMPUTE_GRAPH_NAME))
 
 
-# TODO: check all tensor shapes
 def get_objects(result, score_threshold=0.3, offset=(0, 0)):
     assert len(result.tensors) == 2
     logit_scores = tuple(result.tensors['concat_1'].data)
