@@ -1,4 +1,4 @@
-# python script that converts CORe50 labels (.xtx) into .pbtxt for Tensorflow Object Detection
+# python script that converts CORe50 labels (.txt) into .pbtxt for Tensorflow Object Detection
 # input.txt --> CORe50 labels
 # output.pbttx
 
