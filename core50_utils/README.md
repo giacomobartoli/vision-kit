@@ -4,7 +4,7 @@ This folder contains some classes for converting [CORe50]() dataset into tf_reco
 
 * **convert_labels.py**: it converts CORe50 classes into a readable format for tensorflow (.pbtxt)
 * **create_csv.py**: it scans CORe50 dataset and it creates a .csv file
-* **generate_tfrecord.py**: it converts .csv to a .record ready to be used with Tensorflow.
+* **generate_tfrecord.py**: it writes csv data into a .record file.
 
 ## How to use
 **1** - Download CORe50 classes and run the following code:
@@ -86,7 +86,7 @@ Check your "OUTPUT_PATH" for finding the tf.record file.
 
 **6** - Configure your neural network for Object Detection
 
-In order to run the training phase, TF obj detection need to configured through one of [these files](https://github.com/tensorflow/models/tree/master/research/object_detection/samples/configs).
+In order to run the training phase, TF obj detection needs to configured through one of [these files](https://github.com/tensorflow/models/tree/master/research/object_detection/samples/configs).
 Thus, select your configuration depending on your task/system and the edit the following strings:
 
 	num_classes: 50
@@ -104,5 +104,10 @@ Thus, select your configuration depending on your task/system and the edit the f
 Now you can simply run the training phase over CORe50 dataset:
 
 `python legacy/train.py --logtostderr --train_dir=TRAINING_DIR --pipeline_config_path=CONFIG_PATH.config`
+
+## References 📚
+
+* Vincenzo Lomonaco and Davide Maltoni. "[CORe50: a new Dataset and Benchmark for Continuous Object Recognition](http://proceedings.mlr.press/v78/lomonaco17a.html)". Proceedings of the 1st Annual Conference on Robot Learning, PMLR 78:17-26, 2017. 
+* [Tensorflow Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection)
 
 
