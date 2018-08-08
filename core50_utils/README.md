@@ -66,7 +66,7 @@ At the top level you should find:
 
 **4** - **Convert and match all these data with this script:**
 
-Now you're good to go. Run the following command to create your .csv file:
+Run the following command to create your .csv file:
 
 `python create_csv.py`
 
