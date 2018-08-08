@@ -7,7 +7,7 @@ This folder contains some classes for converting [CORe50]() dataset into tf_reco
 * **generate_tfrecord.py**: it writes csv data into a .record file.
 
 ## How to use
-**1** - Download CORe50 classes and run the following code:
+**1** - **Download CORe50 classes and run the following code**:
 
 `wget https://vlomonaco.github.io/core50/data/core50_class_names.txt`
 
@@ -15,7 +15,7 @@ This folder contains some classes for converting [CORe50]() dataset into tf_reco
 
 A file called "core_50_labels.pbtxt" should appear in your current directory.
 
-**2** - Download CORe50 dataset, unzip, convert .png to jpg.
+**2** - **Download CORe50 dataset, unzip, convert .png to jpg**.
 
 `wget http://bias.csr.unibo.it/maltoni/download/core50/core50_350x350.zip`
 
@@ -29,7 +29,7 @@ A file called "core_50_labels.pbtxt" should appear in your current directory.
 
 `cd ..`
 
-**3** - Download bounding boxes in the same directory:
+**3** - **Download bounding boxes in the same directory:**
 
 `wget https://vlomonaco.github.io/core50/data/bbox.zip`
 
@@ -64,7 +64,7 @@ At the top level you should find:
 	core50_class_names.txt
  	
 
-**4** - Convert and match all these data with this script:
+**4** - **Convert and match all these data with this script:**
 
 Now you're good to go. Run the following command to create your .csv file:
 
@@ -74,7 +74,7 @@ This file will have the format:
 
 [filename, width, height, class, xmin, ymin, xmax, ymax]
 
-**5** - Create your tf.record
+**5** - **Create your tf.record**
 
 Once you've got your .csv file you can create tf.record by running:
 
@@ -84,7 +84,7 @@ Once you've got your .csv file you can create tf.record by running:
 
 Check your "OUTPUT_PATH" for finding the tf.record file.
 
-**6** - Configure your neural network for Object Detection
+**6** - **Configure your neural network for Object Detection**
 
 In order to run the training phase, TF obj detection needs to configured through one of [these files](https://github.com/tensorflow/models/tree/master/research/object_detection/samples/configs).
 Thus, select your configuration depending on your task/system and the edit the following strings:
