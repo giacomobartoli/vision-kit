@@ -1,4 +1,4 @@
-## Google Vision Kit
+## Index
 
 **/core50_utils:** this folder contains some classes for running object detection over [CORe50](https://vlomonaco.github.io/core50/) dataset.
 
