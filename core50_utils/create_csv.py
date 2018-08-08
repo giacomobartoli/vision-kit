@@ -3,16 +3,19 @@ import re
 import os
 from fnmatch import fnmatch
 
-# header for the .csv file
-column_name = ['Filename', 'width', 'height', 'session', 'num_obj','frame', 'xmin', 'ymin', 'xmax', 'ymax','label' ]
+# Header for the .csv file:
+# Choose your header by comment/uncomment lines below.
+# column_name = ['Filename', 'width', 'height', 'session', 'num_obj','frame', 'xmin', 'ymin', 'xmax', 'ymax','label' ]
+column_name = ['Filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
 
 # CORe50 images width and height
 C50_W = 350
 C50_H = 350
 
-# CORe50 root
-root = 'core50_350x350/'
-pattern = "*.png"
+# CORe50 root: select if training dir or test
+root = 'core50_350x350/train'
+# root = 'core50_350x350/train'
+pattern = "*.jpg"
 
 # Bounding boxes root
 bbox = 'bbox/'
@@ -63,24 +66,32 @@ for path, subdirs, files in os.walk(root):
         if fnmatch(name, pattern):
             listToAppend = []
             listToAppend.append(name)
-            listToAppend.append(C50_H)
             listToAppend.append(C50_W)
+            listToAppend.append(C50_H)
             session = 's' + find_obj(name, re_find_session).strip('0')
             object = 'o' + find_obj(name, re_find_object).strip('0')
             frame = find_obj(name, re_find_frame)
-            listToAppend.append(session)
-            listToAppend.append(object)
-            listToAppend.append(frame)
+            listToAppend.append(int(object.strip('o')))
+
+            # WE DO NOT REALLY CARE ABOUT WRITING THESE DATA
+            #l istToAppend.append(session)
+            # listToAppend.append(object)
+            # listToAppend.append(frame)
+
             bounding_box = find_bbox(session, object, frame)
             add_bbox_to_list(bounding_box, listToAppend)
-            listToAppend.append(add_class_to_list(object))
+
+            # ACCORDING TO THE .pbtxt FILE WE NEED CLASS ID, NOT CLASS LABEL
+            # listToAppend.append(add_class_to_list(object))
+
+            #listToAppend.append(int(object.strip('o')))
             # print(name)
             filenames.append(listToAppend)
 
-print(filenames)
+#print(filenames)
 
 # writing data to the .csv file
-with open('core50.csv', 'w') as csvfile:
+with open('core50_train.csv', 'w') as csvfile:
     filewriter = csv.writer(csvfile, delimiter=',',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
     filewriter.writerow(column_name),
@@ -88,4 +99,3 @@ with open('core50.csv', 'w') as csvfile:
         filewriter.writerow(i)
 
 print ('Done! Your .csv file is ready!')
-

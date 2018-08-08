@@ -2,8 +2,11 @@
 # input.txt --> CORe50 labels
 # output.pbttx
 
-input_file = open('input.txt', 'r').readlines()
-output_file = open('output.pbtxt', 'w')
+input = 'core50_class_names.txt'
+output = 'core_50_labels.pbtxt'
+
+input_file = open(input, 'r').readlines()
+output_file = open(output, 'w')
 counter = 0
 
 
@@ -23,6 +26,3 @@ for i in input_file:
 output_file.close()
 
 print('done! Your .pbtxt file is ready!')
-
-
-
