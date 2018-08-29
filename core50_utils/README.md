@@ -86,6 +86,16 @@ Check your "OUTPUT_PATH" for finding the tf.record file.
 
 **6** - **Configure your neural network for Object Detection**
 
+[UPDATE]: Since tf records are hardly debuggable I've decided to create a simple script for inspect them:
+
+`python test_record.py --input="train.record"`
+
+`python test_record.py --input="test.record"`
+
+Output will be images, bounding boxes and classes on your terminal.
+
+**7** - **Configure your neural network for Object Detection**
+
 In order to run the training phase, TF obj detection needs to configured through one of [these files](https://github.com/tensorflow/models/tree/master/research/object_detection/samples/configs).
 Thus, select your configuration depending on your task/system and the edit the following strings:
 
