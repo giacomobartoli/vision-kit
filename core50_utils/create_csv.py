@@ -13,8 +13,8 @@ C50_W = 350
 C50_H = 350
 
 # CORe50 root: select if training dir or test
-root = 'core50_350x350/train'
-# root = 'core50_350x350/train'
+root = 'core50_350x350/test'
+#root = 'core50_350x350/train'
 pattern = "*.jpg"
 
 # Bounding boxes root
@@ -39,10 +39,11 @@ def find_bbox(session, obj, frame):
     bb_path = 'bbox/'+session+'/'+'CropC_'+obj+'.txt'
     f = open(bb_path, 'r').readlines()
     for line in f:
-        regex_frame = '[Color'+frame+': ][0-9]*'
-        bb_pattern = re.compile(regex_frame)
-        c = bb_pattern.match(line).string.strip()
-        return c[10:]
+        regex_temp = 'Color'+frame+': '
+
+        if line.startswith(regex_temp):
+            #print(line[10:])
+            return line[10:]
 
 
 # c[0] = xmin, c[1] = ymin, c[2] = xmax, c[3] = ymax
@@ -73,29 +74,20 @@ for path, subdirs, files in os.walk(root):
             frame = find_obj(name, re_find_frame)
             listToAppend.append(int(object.strip('o')))
 
-            # WE DO NOT REALLY CARE ABOUT WRITING THESE DATA
-            #l istToAppend.append(session)
-            # listToAppend.append(object)
-            # listToAppend.append(frame)
-
             bounding_box = find_bbox(session, object, frame)
             add_bbox_to_list(bounding_box, listToAppend)
 
-            # ACCORDING TO THE .pbtxt FILE WE NEED CLASS ID, NOT CLASS LABEL
-            # listToAppend.append(add_class_to_list(object))
-
-            #listToAppend.append(int(object.strip('o')))
             # print(name)
             filenames.append(listToAppend)
 
 #print(filenames)
 
 # writing data to the .csv file
-with open('core50_train.csv', 'w') as csvfile:
+with open('core50_test.csv', 'w') as csvfile:
     filewriter = csv.writer(csvfile, delimiter=',',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
     filewriter.writerow(column_name),
-    for i in filenames:
+    for i in sorted(filenames):
         filewriter.writerow(i)
 
 print ('Done! Your .csv file is ready!')
