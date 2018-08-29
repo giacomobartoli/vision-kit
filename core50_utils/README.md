@@ -84,7 +84,7 @@ Once you've got your .csv file you can create tf.record by running:
 
 Check your "OUTPUT_PATH" for finding the tf.record file.
 
-**6** - **Configure your neural network for Object Detection**
+**6** - **Check if your tf.record are correctly created**
 
 [UPDATE]: Since tf records are hardly debuggable I've decided to create a simple script for inspect them:
 
