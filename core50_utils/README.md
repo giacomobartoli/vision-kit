@@ -115,6 +115,18 @@ Now you can simply run the training phase over CORe50 dataset:
 
 `python legacy/train.py --logtostderr --train_dir=TRAINING_DIR --pipeline_config_path=CONFIG_PATH.config`
 
+## Performances ##
+Performances converges after 20k iterations, using an adaptive learning rate (rms_prop):
+
+<img width=300 src="img/precision.jpg"><br><br>
+<img src="img/loss.jpg">
+
+Some visual results:
+
+<img width=300 src="img/detection1.jpg">
+<img width=300 src="img/detection2.jpg">
+<img width=300 src="img/detection3.jpg">
+
 ## References 📚
 
 * Vincenzo Lomonaco and Davide Maltoni. "[CORe50: a new Dataset and Benchmark for Continuous Object Recognition](http://proceedings.mlr.press/v78/lomonaco17a.html)". Proceedings of the 1st Annual Conference on Robot Learning, PMLR 78:17-26, 2017. 
