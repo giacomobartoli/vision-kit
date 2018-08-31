@@ -123,9 +123,7 @@ Performances converges after 20k iterations, using an adaptive learning rate (rm
 
 Some visual results:
 
-<img width=300 src="img/detection1.jpg">
-<img width=300 src="img/detection2.jpg">
-<img width=300 src="img/detection3.jpg">
+<img width=300 src="img/detection1.jpg"><img width=300 src="img/detection2.jpg"><img width=300 src="img/detection3.jpg">
 
 ## References 📚
 
