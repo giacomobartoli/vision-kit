@@ -13,8 +13,8 @@ C50_W = 350
 C50_H = 350
 
 # CORe50 root: select if training dir or test
-root = 'core50_350x350/test'
-#root = 'core50_350x350/train'
+#root = 'core50_350x350/test'
+root = 'core50_350x350/train'
 pattern = "*.jpg"
 
 # Bounding boxes root
@@ -37,10 +37,10 @@ def find_obj(s, regex):
 
 def find_bbox(session, obj, frame):
     bb_path = 'bbox/'+session+'/'+'CropC_'+obj+'.txt'
-    f = open(bb_path, 'r').readlines()
-    for line in f:
+    print(bb_path)
+    f1 = open(bb_path, 'r').readlines()
+    for line in f1:
         regex_temp = 'Color'+frame+': '
-
         if line.startswith(regex_temp):
             #print(line[10:])
             return line[10:]
@@ -61,29 +61,36 @@ def add_class_to_list(object):
     f = open('core50_class_names.txt', 'r').readlines()
     return f[index-1].strip()
 
+import glob
+
 # scanning the file system, creating a list with all the data
 for path, subdirs, files in os.walk(root):
-    for name in files:
+    for name in sorted(files):
         if fnmatch(name, pattern):
             listToAppend = []
             listToAppend.append(name)
             listToAppend.append(C50_W)
             listToAppend.append(C50_H)
-            session = 's' + find_obj(name, re_find_session).strip('0')
-            object = 'o' + find_obj(name, re_find_object).strip('0')
+            temp = find_obj(name, re_find_session)
+            if temp.startswith('0'):
+                temp=temp[1:]
+            session = 's' + temp
+            temp = find_obj(name, re_find_object)
+            if temp.startswith('0'):
+                temp=temp[1:]
+            object = 'o' + temp
             frame = find_obj(name, re_find_frame)
             listToAppend.append(int(object.strip('o')))
 
             bounding_box = find_bbox(session, object, frame)
             add_bbox_to_list(bounding_box, listToAppend)
-
-            # print(name)
+            #print(name)
             filenames.append(listToAppend)
 
 #print(filenames)
 
 # writing data to the .csv file
-with open('core50_test.csv', 'w') as csvfile:
+with open('core50_train.csv', 'w') as csvfile:
     filewriter = csv.writer(csvfile, delimiter=',',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
     filewriter.writerow(column_name),
