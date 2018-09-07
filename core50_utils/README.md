@@ -116,7 +116,7 @@ Now you can simply run the training phase over CORe50 dataset:
 `python legacy/train.py --logtostderr --train_dir=TRAINING_DIR --pipeline_config_path=CONFIG_PATH.config`
 
 ## Performances ##
-Performances, after 20k iterations, are between 45-50%, using an adaptive learning rate (rms_prop):
+Performances, after 20k iterations, are between 60-65%, using an adaptive learning rate (rms_prop):
 
 <img width=300 src="img/precision.jpg"><br><br>
 <img src="img/loss.jpg">
