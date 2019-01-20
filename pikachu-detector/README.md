@@ -23,3 +23,11 @@ Have you ever wondered how to exploit Deep Learning and Google Vision Kit for de
 
 ### References:
 * [Custom Vision Training AIY](https://cogint.ai/custom-vision-training-on-the-aiy-vision-kit/) by Chard Hart
+
+## Update 20/01/2019 🔥
+I have uploaded a re-trained frozen graph. This should achieve better performances in detection. However, you have to compile it by yourself. It is still based on *embedded_ssd_mobilenet* so it is fully compatible with the Google AIY Vision kit.
+
+This project was used for a seminar held at **University of Bologna** (Cesena Campus) during the course of Machine Learning. Further material is available here:
+
+* [Medium blog post](https://medium.com/@giacomobartoli/hands-on-with-artificial-intelligence-on-the-edge-77b958526c9d)
+* [Slides] (http://bias.csr.unibo.it/maltoni/ml/Demo/Hands_on_with_EdgeAI.pdf)
