@@ -30,4 +30,4 @@ I have uploaded a re-trained frozen graph. This should achieve better performanc
 This project was used for a seminar held at **University of Bologna** (Cesena Campus) during the course of Machine Learning. Further material is available here:
 
 * [Medium blog post](https://medium.com/@giacomobartoli/hands-on-with-artificial-intelligence-on-the-edge-77b958526c9d)
-* [Slides] (http://bias.csr.unibo.it/maltoni/ml/Demo/Hands_on_with_EdgeAI.pdf)
+* [Slides](http://bias.csr.unibo.it/maltoni/ml/Demo/Hands_on_with_EdgeAI.pdf)
